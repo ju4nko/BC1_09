@@ -54,7 +54,7 @@ public class Terreno {
         }
         if(suma>(filas*columnas*k)){ //COMPROBAR QUE LA CANTIDAD DE ARENA NO SUPERA LA CANTIDAD DEBIDA
             int sobra;
-            sobra=(filas*columnas*k)-suma;
+            sobra=suma-(filas*columnas*k);
             for (int i = 0; i < filas && sobra!=0; i++) {
                 for (int j = 0; j < columnas && sobra!=0; j++) {
                     int valorC=casillas[i][j].getCantArena();
@@ -70,12 +70,12 @@ public class Terreno {
         
         else if(suma<(filas*columnas*k)){//COMPROBAR QUE LA CANTIDAD DE ARENA NO ES MENOR LA CANTIDAD DEBIDA
             int falta;
-            falta=suma-(filas*columnas*k);
+            falta=(filas*columnas*k)-suma;
             for (int i = 0; i < filas && falta!=0; i++) {
                 for (int j = 0; j < columnas && falta!=0; j++) {
                     int valorC=casillas[i][j].getCantArena();
                     while(valorC >0 && valorC<MAX && falta!=0){
-                        valorC--;
+                        valorC++;
                         falta--;
                         casillas[i][j].setCantArena(valorC);
                     }
